@@ -1,0 +1,1 @@
+import{g as r}from"./request-VbSG2qTx.js";function a(o){return r("/api/words/today",{limit:o})}function i(o){return r("/api/words",o||{})}function n(o){return r("/api/words/lookup",{word:o})}export{i as a,a as f,n as l};

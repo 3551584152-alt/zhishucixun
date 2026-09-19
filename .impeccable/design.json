@@ -1,0 +1,21 @@
+{
+  "world": "atelier-word",
+  "name": "纸墨研词所 / Word Atelier",
+  "tokens": {
+    "bg": "#F3EFE6",
+    "card": "#FCFAF4",
+    "paper2": "#ECE5D7",
+    "label": "#26221C",
+    "label2": "#5B5447",
+    "label3": "#6E6556",
+    "tint": "#BC3E1B",
+    "green": "#2F7A4E",
+    "red": "#C0392B",
+    "orange": "#A9690F",
+    "radius": "16px",
+    "cardBorder": "1px solid rgba(38,34,28,.12)",
+    "fontDisplay": "Georgia, \"Iowan Old Style\", \"Palatino Linotype\", \"Songti SC\", serif",
+    "ease": "cubic-bezier(.16,1,.3,1)"
+  },
+  "surfaces": ["login", "study", "practice", "plan", "ai", "stats", "notebook", "dict"]
+}

@@ -1,0 +1,145 @@
+/* ============================================================
+   CT4 3.0 · "纸墨研词所 / Word Atelier"
+   一个新的视觉世界：暖纸、墨、朱砂。印刷式排版与克制动效。
+   ============================================================ */
+:root {
+  --bg: #F3EFE6;                 /* 纸 */
+  --card: #FCFAF4;               /* 卡片纸 */
+  --paper2: #ECE5D7;             /* 下沉纸面 */
+  --label: #26221C;              /* 墨 */
+  --label-2: #5B5447;            /* 次墨 */
+  --label-3: #6E6556;            /* 淡墨 */
+  --separator: rgba(38, 34, 28, .14);
+  --line: rgba(38, 34, 28, .12);
+  --line-strong: rgba(38, 34, 28, .3);
+  --fill: rgba(38, 34, 28, .07);
+  --fill-2: rgba(38, 34, 28, .14);
+  --tint: #BC3E1B;               /* 朱砂 */
+  --tint-deep: #9E3315;
+  --green: #2F7A4E;              /* 墨绿 */
+  --red: #C0392B;                /* 殷红 */
+  --orange: #A9690F;             /* 赭金 */
+  --yellow: #C9A227;
+  --indigo: #4E5C9C;             /* 靛 */
+  --purple: #7A54A8;             /* 紫 */
+  --teal: #2F7C78;
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Songti SC", "SimSun", serif;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { background: var(--bg); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px; line-height: 1.5; color: var(--label);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; font-size: 16px; color: var(--label); caret-color: var(--tint); }
+a { color: var(--tint); text-decoration: none; }
+
+::selection { background: rgba(188, 62, 27, .22); color: var(--label); }
+:focus-visible { outline: 2px solid var(--tint); outline-offset: 2px; border-radius: 4px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(38, 34, 28, .22); border-radius: 8px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: rgba(38, 34, 28, .34); }
+
+/* ---------- 页面容器 ---------- */
+.page { width: 100%; max-width: 1500px; margin: 0 auto; min-height: 100vh; padding: 0 16px calc(96px + env(safe-area-inset-bottom)); }
+.page.no-tab { padding-bottom: 48px; }
+
+/* ---------- 通用状态 ---------- */
+.center { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 26px; color: var(--label-3); font-size: 15px; text-align: center; }
+.center .empty-symbol { font-size: 46px; margin-bottom: 12px; color: var(--label-3); }
+.center .empty-title { font-size: 18px; font-weight: 600; color: var(--label); margin-bottom: 6px; }
+.center .empty-sub { font-size: 13px; color: var(--label-3); line-height: 1.7; }
+.center .empty-actions { display: flex; gap: 12px; margin-top: 20px; }
+.muted { color: var(--label-3); }
+
+/* ---------- 卡片 / 分组：印刷式纸卡 ---------- */
+.card, .group { background: var(--card); border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+.inset-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--card); width: 100%; text-align: left; }
+.inset-row + .inset-row { border-top: 1px solid var(--separator); }
+.row-tap { cursor: pointer; transition: background .18s ease, transform .18s var(--ease-out); }
+.row-tap:active { background: var(--paper2); }
+@media (hover: hover) { .row-tap:hover { background: #F6F1E6; } }
+
+/* ---------- 按钮 ---------- */
+.btn {
+  appearance: none; border: 1px solid transparent; border-radius: 12px; height: 46px; padding: 0 24px;
+  font-size: 16px; font-weight: 600; background: var(--tint); color: #FFF9F2;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  transition: transform .12s var(--ease-out), filter .15s, box-shadow .15s; user-select: none;
+  box-shadow: 0 1px 2px rgba(38, 34, 28, .18);
+}
+.btn:active { transform: translateY(1px) scale(.99); filter: brightness(.94); }
+.btn:disabled { opacity: .38; cursor: default; transform: none; }
+.btn.block { width: 100%; }
+.btn.ghost { background: transparent; color: var(--tint); border-color: rgba(188, 62, 27, .45); box-shadow: none; }
+.btn.ghost:active { background: rgba(188, 62, 27, .07); }
+.btn.green { background: var(--green); }
+.btn.sm { height: 38px; padding: 0 18px; font-size: 15px; border-radius: 10px; }
+.link { color: var(--tint); cursor: pointer; background: none; border: none; font-size: inherit; padding: 0; text-decoration: underline; text-decoration-color: rgba(188, 62, 27, .35); text-underline-offset: 3px; }
+
+/* ---------- 分段控件 ---------- */
+.seg { display: flex; background: rgba(38, 34, 28, .07); border-radius: 12px; padding: 3px; gap: 3px; }
+.seg-item { flex: 1; text-align: center; padding: 7px 4px; border-radius: 9px; font-size: 13px; font-weight: 600; color: var(--label-2); cursor: pointer; white-space: nowrap; transition: background .2s var(--ease-out), color .2s, box-shadow .2s; border: none; background: transparent; }
+.seg-item.on { background: var(--card); color: var(--label); box-shadow: 0 1px 2px rgba(38, 34, 28, .14); }
+
+/* ---------- 胶囊 ---------- */
+.chip { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; letter-spacing: .02em; background: var(--fill); color: var(--label-2); white-space: nowrap; }
+.chip.blue { background: rgba(188, 62, 27, .1); color: #9E3315; }
+.chip.green { background: rgba(47, 122, 78, .12); color: #23603B; }
+.chip.orange { background: rgba(169, 105, 15, .14); color: #7C4A06; }
+.chip.red { background: rgba(192, 57, 43, .1); color: #9E2417; }
+.chip.purple { background: rgba(122, 84, 168, .12); color: #5D3C88; }
+.chip.gray { background: var(--fill); color: var(--label-2); }
+.chip.dark { background: rgba(38, 34, 28, .82); color: #F7F2E6; }
+
+/* ---------- 输入 ---------- */
+.textfield {
+  width: 100%; height: 44px; padding: 0 14px; background: var(--paper2); border: 1px solid transparent;
+  border-radius: 10px; font-size: 16px; color: var(--label); outline: none;
+  transition: background .15s, border-color .15s, box-shadow .15s;
+}
+.textfield::placeholder { color: var(--label-3); }
+.textfield:focus { background: var(--card); border-color: rgba(188, 62, 27, .5); box-shadow: 0 0 0 3px rgba(188, 62, 27, .12); }
+
+/* ---------- 过渡 / 动效 ---------- */
+.fade-enter-active, .fade-leave-active { transition: opacity .2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+@keyframes rise { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadePaper { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   世界覆盖：把散落在各视图里的“灰玻璃/系统蓝”痕迹统一为纸墨
+   ============================================================ */
+/* 纸色毛玻璃导航与底栏 */
+.nav, .topbar {
+  background: rgba(250, 247, 240, .86) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.05) !important;
+  backdrop-filter: blur(18px) saturate(1.05) !important;
+  border-bottom: 1px solid rgba(38, 34, 28, .09) !important;
+}
+.nav-title { color: var(--label) !important; }
+.nav-sub { color: var(--label-3) !important; }
+.tabbar {
+  background: rgba(250, 247, 240, .9) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.05) !important;
+  backdrop-filter: blur(18px) saturate(1.05) !important;
+  border-top: 1px solid rgba(38, 34, 28, .12) !important;
+}
+/* 印刷式纸卡：去掉软阴影，统一细墨线 */
+.card, .group, .flash, .question-card, .score-card, .sum, .ai-card, .detail, .item,
+.block, .user-card, .q-card, .panel, .search-wrap, .train-ctl, .ox-link, .stat, .nb-card, .fc-item {
+  box-shadow: none !important;
+}
+.flash, .question-card, .score-card, .sum, .ai-card, .detail, .item, .q-card,
+.user-card, .stat, .nb-card { border: 1px solid var(--line) !important; }
+.search-wrap, .train-ctl { border: 1px solid var(--line) !important; background: var(--card) !important; }
+/* 英文单词：衬线展示字 */
+.word, .d-word, .b-word, .rw-word, .sheet-word, .row-word, .t-word, .q-stem:not(.cn) { font-family: var(--font-display) !important; }
+.word { letter-spacing: -.015em !important; }
+/* 进度条换朱砂墨 */
+.progress-inner, .sum-bar-inner, .d-num, .bar-inner { border-radius: 999px !important; }

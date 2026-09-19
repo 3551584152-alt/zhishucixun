@@ -1,0 +1,1 @@
+import{p as r}from"./request-VbSG2qTx.js";function o(n){return r("/api/agents/plan",{remaining_days:0})}function u(n,t){const a={};return n&&(a.word_id=n),t&&(a.word=t),r("/api/agents/tutor",a)}function s(n){return r("/api/agents/train",{topic:n.topic||"read",word_id:n.word_id||null,word:n.word||null,stubborn_only:!!n.stubborn_only,count:n.count||4})}export{u as a,s as b,o as c};

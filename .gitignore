@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Django / local data
+db.sqlite3
+*.log
+
+# Secrets (never commit)
+.env
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Impeccable runtime
+.impeccable/mocks/
+.impeccable/tmp/
