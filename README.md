@@ -71,3 +71,17 @@ npm run build                     # 重新构建 -> dist（部署以 8000 为准
 - Key 存放于项目根目录 .env（LLM_API_KEY / LLM_BASE_URL / LLM_MODEL），密钥只存在于后端。
 - AI 例句、词汇辅导、学情规划、错题分析已接入 DeepSeek（OpenAI 兼容）；训练评估使用本地出题引擎保证稳定。
 - 未配置或调用失败时自动降级为本地结果，不影响使用。
+
+## 云端部署（Render，推荐）
+
+本项目是 Django + Vue 一体化应用（Django 直接托管 `frontend/dist`），推荐部署到 Render 免费套餐：
+
+1. 用 GitHub 账号登录 https://render.com ，选择 **New → Blueprint**，连接仓库 `zhishucixun`
+2. Render 会自动读取仓库根目录的 `render.yaml` 并创建 Web Service
+3. 在环境变量（Environment）里填写 `LLM_API_KEY`，值为你自己的 DeepSeek API Key
+4. 部署完成后访问 `https://<你的服务名>.onrender.com`
+
+注意事项：
+- **大模型密钥只应填写在平台的环境变量中，切勿提交到仓库或前端**；仓库里的 `.env.example` 仅作格式示例。
+- 未配置密钥时，AI 功能自动本地降级，其余功能不受影响。
+- 免费实例使用 SQLite，重新部署或实例重启后数据会重置；词库由 `build.sh` 自动重新导入。
